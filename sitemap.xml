@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://msaher.github.io/book-reviews/</loc>
+    <lastmod>2025-10-11T15:49:51+03:00</lastmod>
+  </url><url>
     <loc>https://msaher.github.io/</loc>
-    <lastmod>2025-09-17T00:00:00+00:00</lastmod>
+    <lastmod>2025-10-11T15:49:51+03:00</lastmod>
+  </url><url>
+    <loc>https://msaher.github.io/book-reviews/sicp/</loc>
+    <lastmod>2025-10-11T15:49:51+03:00</lastmod>
   </url><url>
     <loc>https://msaher.github.io/writings/</loc>
     <lastmod>2025-09-17T00:00:00+00:00</lastmod>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book-Reviews on Saher&#39;s page</title>
+    <link>https://msaher.github.io/book-reviews/</link>
+    <description>Recent content in Book-Reviews on Saher&#39;s page</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Oct 2025 15:49:51 +0300</lastBuildDate>
+    <atom:link href="https://msaher.github.io/book-reviews/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Structure and interpretation of computer programs</title>
+      <link>https://msaher.github.io/book-reviews/sicp/</link>
+      <pubDate>Sat, 11 Oct 2025 15:49:51 +0300</pubDate>
+      <guid>https://msaher.github.io/book-reviews/sicp/</guid>
+      <description>&lt;div style=&#34;display: flex; justify-content: space-between&#34;&gt;&#xA;&lt;p&gt;&#xA;The wizard book is considered a timeless classic that I will always hold dear to my heart for introducing me to computer science. It touches a lot of topics, making it a great introduction. Still, starting with functional programming is arguably less intuitive for most people. Most people don&#39;t care about purity (yet). Why would they?&#xA;&lt;/p&gt;&#xA;&lt;img style=&#34;padding: 5px; margin: 5px; max-width: 150px;&#34; alt=&#34;cover&#34; src=&#34;https://upload.wikimedia.org/wikipedia/commons/9/9d/SICP_cover.jpg&#34;/&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>
