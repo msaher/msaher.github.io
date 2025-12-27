@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Powershell? More like PowerDSL | Saher&#39;s page</title>
+
+      <link rel="stylesheet" href="/css/main.min.4900fe666efbd8a31ee0816c94f6bbe1c3981f909f5b9a05f0a9165d36d79b08.css" integrity="sha256-SQD&#43;Zm772KMe4IFslPa74cOYH5CfW5oF8KkWXTbXmwg=" crossorigin="anonymous">
+
+
+
+
+</head>
+<body>
+  <header>
+    <h1>Saher&#39;s page</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/writings/">Writings</a>
+    </li>
+    <li>
+      <a href="/book-reviews/">Book reviews</a>
+    </li>
+    <li>
+      <a href="/index.xml" style="color:#ff8000; font-weight: bold">RSS</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Powershell? More like PowerDSL</h1>
+
+  
+  
+  <time datetime="2025-12-27T08:08:54&#43;03:00">December 27, 2025</time>
+
+  <p>I really tried to like Powershell. Despite coming from Unix, I was open to powershell&rsquo;s ideas like everything being an object. But after sometime with it I concluded powershell adds more friction than benefit.</p>
+<p>Powershell&rsquo;s main novelty is having objects in a shell. But is this trade-off worth it? Especially when it entails allocating .NET objects all the time. Many important programs have stable outputs so adding structure everywhere is rarely useful. Even programs that might change their output like git have a <code>--porcelain</code> flag for programmatic consumption. Any serious tool you rely on for your infrastructure has a <code>--json</code> flag or similar. If it does not, that&rsquo;s a problem with the tool more than it is with the shell.</p>
+<p>I understand that output inconsistency is a real issue and there&rsquo;s value in having structured objects, but I believe attempting to solve it on the shell level rather than on the tool level is an invasive decision, and I personally think its not worth it. CLI programs often output text. They don&rsquo;t allocate .NET objects and they don&rsquo;t make assumptions about the underlying shell. In order to make them
+play nicely with the powershell world you&rsquo;ll have to output json then call <code>ConvertFrom-Json</code>. If the program doesn&rsquo;t output json then you&rsquo;re out of luck. You&rsquo;re back to parsing text just like in Unix shells.</p>
+<p>Powershell does not replace text-pipelines; it adds an object world alongside it, making you hold two execution models in your head. In Unix, everything outputs text, whether it&rsquo;s a shell builtin or an external command. There&rsquo;s no &ldquo;object&rdquo; and &ldquo;text&rdquo; world that you have to think about. To get the most out of powershell and its rich objects, you&rsquo;ll have to stick to builtin cmdlets or cmdlets made specifically for powershell. Oftentimes it feels like DSL for Microsoft&rsquo;s products. I wouldn&rsquo;t mind it if it was called PowerDSL :p</p>
+<p>Performance is another significant issue: Powershell is slow. It starts up slow, runs cmdlets slow, and consumes a relatively large amount of resources for simple operations. Shells should be quick and snappy given how much time we spend using them. Even without using the rich object features of powershell, you&rsquo;re still paying the performance cost.</p>
+<p>Coming from Unix, I was pleasantly surprised to see that powershell has builtin readline support (bash-like keybindings), but I noticed that it sometimes crashes unexpectedly. A keyboard shortcut might crash in your shell&hellip; Powershell then shows an error message asking you to report issues for Microsoft&rsquo;s broken readline implementation on GitHub. That&rsquo;s a multibillion-dollar corporation by the way.</p>
+<p>Some things that bother me: I found its syntax ugly, its case insensitive-but-sometimes-case-sensitive naming conventions annoying. You have to restart the shell when <code>PATH</code> changes. I noticed they often taxonomize things that don&rsquo;t need taxonomizing (Looking at you, <code>$PWD.Path</code>). Some things throw exceptions, but other things return <code>null</code>. Those things add friction.</p>
+<p>That&rsquo;s not to say Unix shells are perfect. However, despite being older, they somehow feel more pleasant than powershell. It&rsquo;s tragic because Microsoft had the opportunity to make something much better.</p>
+
+  
+
+
+  </main>
+  <footer>
+    
+<p style="font-weight: bold">Thoughts? Comments? Suggestions? <a href="mailto:msaher.shair@gmail.com">I'd be delighted to hear from you!</a> <span style="font-weight: normal"> :D</span></p>
+
+
+  </footer>
+</body>
+</html>
