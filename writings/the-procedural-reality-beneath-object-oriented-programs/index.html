@@ -135,7 +135,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">// our constructor
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">shape</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">shape</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">shape</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">x</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">x</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">shape</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">y</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">y</span>;
 </span></span><span style="display:flex;"><span>
@@ -152,16 +152,16 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#e5c07b">int</span> <span style="color:#61afef;font-weight:bold">main</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Shape</span> <span style="color:#e06c75">circle</span>; <span style="color:#7f848e">// allocated on the stack
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">Shape</span> <span style="color:#e06c75">rectangle</span>;
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Shape</span> <span style="color:#e06c75">rectangle</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>, <span style="color:#d19a66">0</span>, <span style="color:#d19a66">0</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">rectangle</span>, <span style="color:#d19a66">0</span>, <span style="color:#d19a66">0</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// override
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">circle</span>.<span style="color:#e06c75">area</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">circle_area</span>;
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">circle</span>.<span style="color:#e06c75">area</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">circle_area</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">rectangle</span>.<span style="color:#e06c75">area</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">rectangle_area</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// use
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">circle</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>);
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">circle</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">rectangle</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">rectangle</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#c678dd">return</span> <span style="color:#d19a66">0</span>;
@@ -185,24 +185,24 @@
 </span></span></code></pre></div><p>The reason why we need <code>Shape super</code> to be the first member will become clear later.</p>
 <p>We now have everything we need to implement circles and rectangles that work. Since the code for circles and rectangles is very similar, we&rsquo;ll focus on circles from now on. We added a new method to <code>Circle</code> by adding an additional function pointer, we have to initialize that function pointer in the circle&rsquo;s &ldquo;constructor&rdquo;</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#7f848e">// A new method for circle
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">spin</span>(<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">spin</span>(<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">printf</span>(<span style="color:#98c379">&#34;Spinning this circle. Btw it has radius %g</span><span style="color:#98c379">\n</span><span style="color:#98c379">&#34;</span>, <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">// Circle&#39;s constructor
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">init_circle</span>(<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">radius</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">init_circle</span>(<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">radius</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">super</span>, <span style="color:#e06c75">x</span>, <span style="color:#e06c75">y</span>); <span style="color:#7f848e">// calling the &#34;super constructor&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">spin</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">spin</span>; <span style="color:#7f848e">// registering a new method
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">spin</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">spin</span>; <span style="color:#7f848e">// registering a new method
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">radius</span>; <span style="color:#7f848e">// data unique to Circle
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The <code>init_circle()</code> function acts like a constructor for <code>Circle</code>. Notice how it internally calls <code>init_shape()</code>, which acts like a &ldquo;super&rdquo; constructor. We then set the function pointers of our implementation. Next, we&rsquo;ll override existing behaviour by changing the function pointers of the underlying <code>Shape</code> struct embedded within each subclass. Example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#7f848e">#define PI 3.14159
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">// Overriding a method for circle
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e5c07b">double</span> <span style="color:#61afef;font-weight:bold">circle_area</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e5c07b">double</span> <span style="color:#61afef;font-weight:bold">circle_area</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// woah! This is like downcasting in Java.
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">circle</span> <span style="color:#56b6c2">=</span> (<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span>) <span style="color:#e06c75">this</span>;
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">circle</span> <span style="color:#56b6c2">=</span> (<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span>) <span style="color:#e06c75">this</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#c678dd">return</span> <span style="color:#e06c75">PI</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">circle</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">circle</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span>;
 </span></span><span style="display:flex;"><span>}
@@ -213,7 +213,7 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">super</span>, <span style="color:#e06c75">x</span>, <span style="color:#e06c75">y</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">spin</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">spin</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">super</span>.<span style="color:#e06c75">area</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">circle_area</span>; <span style="color:#7f848e">// overriding an existing method
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">radius</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>You might&rsquo;ve noticed that <code>circle_area()</code>&rsquo;s signature takes a <code>Shape *</code> instead of <code>Circle *</code>, this is because <code>super-&gt;area</code> expects a <code>Shape *</code> parameter and we have to match its signature. In order to turn the <code>Shape *</code> argument into a <code>Circle *</code> (to access the radius), we <em>cast</em> the <code>Shape *</code> into a <code>Circle *</code>.</p>
@@ -224,11 +224,11 @@
 <p>Our implementation is complete. We can now write similar code for rectangles, and then try our class hierarchy out. Here&rsquo;s the full code:</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#7f848e">#include</span> <span style="color:#7f848e">&lt;stdio.h&gt;</span><span style="color:#7f848e">
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">#define PI 3.14159
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">/////////////////
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">// Shape &#34;class&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">/////////////////
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#c678dd">typedef</span> <span style="color:#c678dd">struct</span> <span style="color:#e06c75">Shape</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>;
@@ -250,7 +250,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">// shape constructor
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">shape</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">shape</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>, <span style="color:#e5c07b">double</span> <span style="color:#e06c75">y</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">shape</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">x</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">x</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">shape</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">y</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">y</span>;
 </span></span><span style="display:flex;"><span>
@@ -262,7 +262,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">/////////////////
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">// Circle &#34;class&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">/////////////////
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#c678dd">typedef</span> <span style="color:#c678dd">struct</span> <span style="color:#e06c75">Circle</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Shape</span> <span style="color:#e06c75">super</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">double</span> <span style="color:#e06c75">radius</span>;
@@ -274,7 +274,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">// Overriding a method for circle
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#e5c07b">double</span> <span style="color:#61afef;font-weight:bold">circle_area</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e5c07b">double</span> <span style="color:#61afef;font-weight:bold">circle_area</span>(<span style="color:#e06c75">Shape</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">circle</span> <span style="color:#56b6c2">=</span> (<span style="color:#e06c75">Circle</span> <span style="color:#56b6c2">*</span>) <span style="color:#e06c75">this</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#c678dd">return</span> <span style="color:#e06c75">PI</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">circle</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span> <span style="color:#56b6c2">*</span> <span style="color:#e06c75">circle</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span>;
 </span></span><span style="display:flex;"><span>}
@@ -283,14 +283,14 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">init_shape</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">super</span>, <span style="color:#e06c75">x</span>, <span style="color:#e06c75">y</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">spin</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">spin</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">super</span>.<span style="color:#e06c75">area</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">circle_area</span>; <span style="color:#7f848e">// overriding an existing method
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">this</span><span style="color:#56b6c2">-&gt;</span><span style="color:#e06c75">radius</span> <span style="color:#56b6c2">=</span> <span style="color:#e06c75">radius</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#7f848e">/////////////////////
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">// Rectangle &#34;class&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">////////////////////
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#c678dd">typedef</span> <span style="color:#c678dd">struct</span> <span style="color:#e06c75">Rectangle</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Shape</span> <span style="color:#e06c75">super</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">double</span> <span style="color:#e06c75">width</span>;
@@ -317,16 +317,16 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">init_rectangle</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">rectangle</span>, <span style="color:#d19a66">5</span>, <span style="color:#d19a66">6</span>, <span style="color:#d19a66">0</span>, <span style="color:#d19a66">0</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// each area &#34;method call&#34; points to a different function
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#61afef;font-weight:bold">printf</span>(<span style="color:#98c379">&#34;circle area: %g</span><span style="color:#98c379">\n</span><span style="color:#98c379">&#34;</span>, <span style="color:#e06c75">circle</span>.<span style="color:#e06c75">super</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>.<span style="color:#e06c75">super</span>)); <span style="color:#7f848e">// ~ 314
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#61afef;font-weight:bold">printf</span>(<span style="color:#98c379">&#34;rectangle area: %g</span><span style="color:#98c379">\n</span><span style="color:#98c379">&#34;</span>, <span style="color:#e06c75">rectangle</span>.<span style="color:#e06c75">super</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">rectangle</span>.<span style="color:#e06c75">super</span>)); <span style="color:#7f848e">// 30
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>
+</span></span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">printf</span>(<span style="color:#98c379">&#34;circle area: %g</span><span style="color:#98c379">\n</span><span style="color:#98c379">&#34;</span>, <span style="color:#e06c75">circle</span>.<span style="color:#e06c75">super</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>.<span style="color:#e06c75">super</span>)); <span style="color:#7f848e">// ~ 314
+</span></span></span><span style="display:flex;"><span>  <span style="color:#61afef;font-weight:bold">printf</span>(<span style="color:#98c379">&#34;rectangle area: %g</span><span style="color:#98c379">\n</span><span style="color:#98c379">&#34;</span>, <span style="color:#e06c75">rectangle</span>.<span style="color:#e06c75">super</span>.<span style="color:#61afef;font-weight:bold">area</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">rectangle</span>.<span style="color:#e06c75">super</span>)); <span style="color:#7f848e">// 30
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// let&#39;s also spin the circle for fun
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">circle</span>.<span style="color:#61afef;font-weight:bold">spin</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>);
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">circle</span>.<span style="color:#61afef;font-weight:bold">spin</span>(<span style="color:#56b6c2">&amp;</span><span style="color:#e06c75">circle</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Our implementation works perfectly fine for small programs or even some large programs. However, imagine we were working on something complex like a graphics engine where we&rsquo;d have dozens of methods and thousands of shapes everywhere. Assuming a 64-bit machine, each shape takes at least 40 bytes of memory mostly because of the function pointers it has to carry. If we had 10000 shapes, we&rsquo;d consume 400 KB, and that&rsquo;s ignoring the other specific fields the subclasses have to store. Each method increases our memory usage by 8 bytes; that&rsquo;s linear (<code>O(n)</code>) space consumption. One optimization that OOP language use is to store all the function pointers in a separate struct called a &ldquo;vtable&rdquo;. Each <code>Shape</code> instance, would then have a <em>pointer</em> to that vtable instead</p>
 <p>We can implement vtables like so:</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#7f848e">// forward declaration to satisfy the compiler
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#c678dd">typedef</span> <span style="color:#c678dd">struct</span> <span style="color:#e06c75">ShapeVTable</span> <span style="color:#e06c75">ShapeVTable</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#c678dd">typedef</span> <span style="color:#c678dd">struct</span> <span style="color:#e06c75">ShapeVTable</span> <span style="color:#e06c75">ShapeVTable</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#c678dd">typedef</span> <span style="color:#c678dd">struct</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">double</span> <span style="color:#e06c75">x</span>;
@@ -362,25 +362,25 @@
 </span></span></code></pre></div><p>Just like in the circle example, overriding <code>A</code>&rsquo;s method is easy because we know an instance of <code>A</code> is the first member of <code>Child</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">child_do_a</span>(<span style="color:#e06c75">A</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// downcast just like with Circle
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e06c75">Child</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">child</span> <span style="color:#56b6c2">=</span> (<span style="color:#e06c75">Child</span> <span style="color:#56b6c2">*</span>) <span style="color:#e06c75">this</span>;
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Child</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">child</span> <span style="color:#56b6c2">=</span> (<span style="color:#e06c75">Child</span> <span style="color:#56b6c2">*</span>) <span style="color:#e06c75">this</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// use child just fine
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">child_do_b</span>(<span style="color:#e06c75">B</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// how to downcast????
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Overriding <code>B</code> is trickier since we only get a pointer to <code>B</code>. You might attempt to use pointer arithmetic to get a pointer to <code>Child.</code>. That would certainly work but its needlessly error prone and annoying to maintain: What happens if we add a new field between <code>A</code> and <code>B</code>? What if the layout changes after a refactor? It would be great if there&rsquo;s a way for us to <em>ask</em> the compiler to find out the necessary offset for us. Fortunately, there&rsquo;s a way for us to do this.</p>
 <h2 id="offsetof-and-container_of"><code>offsetof()</code> and <code>container_of()</code></h2>
 <p>The <a href="https://en.wikipedia.org/wiki/Offsetof"><code>offsetof()</code></a> macro (It&rsquo;s amazing that a macro has its own Wikipedia page) allows us to get the offset in bytes of a member, from its struct. That is, if we have a structure like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#c678dd">struct</span> <span style="color:#e06c75">X</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">char</span> <span style="color:#e06c75">a</span>; <span style="color:#7f848e">// offset: 0
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e5c07b">int</span> <span style="color:#e06c75">b</span>; <span style="color:#7f848e">// starts at: 4 (due to padding)
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>  <span style="color:#e5c07b">int</span> <span style="color:#e06c75">c</span>; <span style="color:#7f848e">// starts at: 8
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>};
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">int</span> <span style="color:#e06c75">b</span>; <span style="color:#7f848e">// starts at: 4 (due to padding)
+</span></span></span><span style="display:flex;"><span>  <span style="color:#e5c07b">int</span> <span style="color:#e06c75">c</span>; <span style="color:#7f848e">// starts at: 8
+</span></span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>Then we can use <code>offsetof()</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#61afef;font-weight:bold">offsetof</span>(<span style="color:#e06c75">X</span>, <span style="color:#e06c75">a</span>) <span style="color:#7f848e">// 0
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#61afef;font-weight:bold">offsetof</span>(<span style="color:#e06c75">X</span>, <span style="color:#e06c75">b</span>) <span style="color:#7f848e">// 4
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span><span style="color:#61afef;font-weight:bold">offsetof</span>(<span style="color:#e06c75">X</span>, <span style="color:#e06c75">c</span>) <span style="color:#7f848e">// 8
+</span></span></span><span style="display:flex;"><span><span style="color:#61afef;font-weight:bold">offsetof</span>(<span style="color:#e06c75">X</span>, <span style="color:#e06c75">b</span>) <span style="color:#7f848e">// 4
+</span></span></span><span style="display:flex;"><span><span style="color:#61afef;font-weight:bold">offsetof</span>(<span style="color:#e06c75">X</span>, <span style="color:#e06c75">c</span>) <span style="color:#7f848e">// 8
 </span></span></span></code></pre></div><p>The <code>offsetof()</code> macro is already provided by <a href="https://gcc.gnu.org/onlinedocs/gcc/Offsetof.html">GCC</a>, <a href="https://clang.llvm.org/docs/LanguageExtensions.html">Clang</a>, and <a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/offsetof-macro?view=msvc-170">MSVC</a>. We may simply use it without thinking about the details, but you might wonder how it is implemented. Well, GCC and Clang define it in terms of a compiler built-in, a black box:</p>
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#7f848e">#define offsetof(st, m) \
 </span></span></span><span style="display:flex;"><span><span style="color:#7f848e">  __builtin_offsetof(st, m)
@@ -400,12 +400,12 @@
 <div class="highlight"><pre tabindex="0" style="color:#abb2bf;background-color:#282c34;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">child_do_a</span>(<span style="color:#e06c75">A</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Child</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">child</span> <span style="color:#56b6c2">=</span> <span style="color:#61afef;font-weight:bold">container_of</span>(<span style="color:#e06c75">this</span>, <span style="color:#e06c75">Child</span>, <span style="color:#e06c75">a</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// use child just fine
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#e5c07b">void</span> <span style="color:#61afef;font-weight:bold">child_do_b</span>(<span style="color:#e06c75">B</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">this</span>) {
 </span></span><span style="display:flex;"><span>  <span style="color:#e06c75">Child</span> <span style="color:#56b6c2">*</span><span style="color:#e06c75">child</span> <span style="color:#56b6c2">=</span> <span style="color:#61afef;font-weight:bold">container_of</span>(<span style="color:#e06c75">this</span>, <span style="color:#e06c75">Child</span>, <span style="color:#e06c75">b</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#7f848e">// use child just fine
-</span></span></span><span style="display:flex;"><span><span style="color:#7f848e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Splendid! We now have the necessary machinery needed to perform multiple inheritance. Using <code>container_of()</code> allows us to put superclasses anywhere. To make your code more robust, you should always use <code>container_of()</code> instead of relying on a superclass being the first member, even when you use single inheritance.</p>
 <h1 id="interfaces">Interfaces</h1>
 <p>An interface, can be thought of as just a class with a vtable only (only behaviour, no state). Thus, we already have all the tools to emulate interfaces in C! In fact, languages like C++ or python don&rsquo;t have a concept of interfaces. It&rsquo;s just another data-less class you can extend.</p>
