@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thoughts on shells | Saher&#39;s page</title>
+
+      <link rel="stylesheet" href="/css/main.min.4900fe666efbd8a31ee0816c94f6bbe1c3981f909f5b9a05f0a9165d36d79b08.css" integrity="sha256-SQD&#43;Zm772KMe4IFslPa74cOYH5CfW5oF8KkWXTbXmwg=" crossorigin="anonymous">
+
+
+
+
+</head>
+<body>
+  <header>
+    <h1>Saher&#39;s page</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/writings/">Writings</a>
+    </li>
+    <li>
+      <a href="/book-reviews/">Book reviews</a>
+    </li>
+    <li>
+      <a href="/index.xml" style="color:#ff8000; font-weight: bold">RSS</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Thoughts on shells</h1>
+
+  
+  
+  <time datetime="2026-04-23T15:04:28&#43;03:00">April 23, 2026</time>
+
+  <p>Shells are ubiquitous, yet I don&rsquo;t see their design being discussed as frequently as I like. They have stayed roughly the same across the years, and I feel like we can address a few things about them.</p>
+<p>Shells are almost always used through a terminal emulator (in canonical mode) <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. Terminals are portable and comfy, but they also leave a lot to be desired. You have a text-only environment that only uses mono space fonts, and it lacks proper UI elements which limits the type of user interfaces you can make: No images nor clickable elements like buttons. Many users object that this is actually a feature because it allows fast keyboard centric UIs, but they&rsquo;re not mutually exclusive; you can have both. They&rsquo;re useful in different contexts.</p>
+<video controls style="width:80%; display:block; margin:0 auto;">
+  <source src="https://github.com/user-attachments/assets/a8ae15e6-7c8c-4a83-bae2-75a1ab691c51" type="video/mp4">
+</video>
+<p>Shells provide little support for multitasking. You typically only run one command at a time that you can suspend through <code>ctrl-z</code> and resume through the <code>fg</code> builtin. However, nobody I know uses the job system, as most users prefer using one of:</p>
+<ul>
+<li>Multiplexers like tmux, screen, and more recently zellij.</li>
+<li>terminal emulators: kitty, ghostty, etc.</li>
+<li>Editors: Most code editors like neovim provide a builtin terminal.</li>
+</ul>
+<p>Multiplexers are my preferred choice. I rarely ever use a shell outside of tmux. If users always reach out for external programs to use a shell, why can&rsquo;t shells borrow some of those features and ideas? Multiplexers are powerful, but they also carry a lot of baggage and have performance implications. Why can&rsquo;t we have a tabs or splits in shells as first class citizens?</p>
+<p>Some shells stick to terminals but add a twist to their language. Shells like <a href="https://www.nushell.sh/">nushell</a> or powershell introduce objects or structured data into the shell pipeline. This does provide a lot of advantages, but as I have highlighted in my <a href="./powerdsl">previous post</a> it comes with costs. Moreover, having rich objects increases the complexity of your shell&rsquo;s language, and shell languages are notorious for being annoying. Small shell scripts can be elegant and concise, but nobody likes to write large shell scripts. There&rsquo;s a reason why many Linux distros ship with python. Its common to start writing a shell script and switch to python midway once you realize the script has gotten too complicated. I&rsquo;d like to see shells that optimize for the interactive use case rather than the language use case.</p>
+<p>I created an experimental shell called <a href="https://github.com/msaher/browsh">browsh</a> that doesn&rsquo;t use terminals at all. Instead it uses the browser as its UI, allowing programs to render arbitrary HTML, this includes buttons, forms, etc. It allows us to handle asynchronous tasks for free. You can imagine how this can be extended to allow tabs or splits. Additionally, since writing complex shell logic is unpleasant <code>browsh</code> embeds Lua, a small language built for embedding, letting us write small Lua blocks as if they were any command. They can participate in pipelines and access <code>stdin</code> and <code>stdout</code> just fine, allowing our shell to be expressive without using a bespoke programming language.</p>
+<p>Obviously I don&rsquo;t expect anyone to switch to it, but it highlights the kind of stuff I want to see in newer shells. A kind of shell that bootstraps its own GUI and allows external programs to change the UI&rsquo;s state. Until then, I&rsquo;ll be using my trusty zsh + tmux + neovim setup.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>emacs&rsquo; <code>M-x eshell</code> comes to mind as an exception for a shell designed around a non-terminal&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+  
+
+
+  </main>
+  <footer>
+    
+<p style="font-weight: bold">Thoughts? Comments? Suggestions? <a href="mailto:msaher.shair@gmail.com">I'd be delighted to hear from you!</a> <span style="font-weight: normal"> :D</span></p>
+
+
+  </footer>
+</body>
+</html>
